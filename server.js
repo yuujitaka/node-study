@@ -1,8 +1,18 @@
 const path = require('path');
+const logger = require('./middleware/logEvents');
 const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 3500;
+
+//custom middleware logger
+app.use(logger);
+
+//built-in middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+//serve static files
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
   //both ways

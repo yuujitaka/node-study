@@ -1,0 +1,6 @@
+20230727	16:34:19	9f953b6e-0e92-4494-9c69-143afd591848	GET	undefined	/new-page.html
+20230727	16:34:19	d51fa14c-6f31-42b8-ac0c-89aba76a7227	GET	undefined	/img/img.png
+20230727	16:37:47	711584e2-7964-4ec4-a5e0-52e7ab8f8d35	GET	undefined	/new-page.html
+20230727	16:37:47	928f8bf1-db7e-4e59-881e-903f637411c5	GET	undefined	/img/img.png
+20230727	16:39:08	e90f8375-c406-4f86-a40e-3aca4e50dd14	OPTIONS	https://www.google.com	/
+20230727	16:39:08	7caf8ec4-cf0d-4a19-aa34-99e49fcb6611	GET	https://www.google.com	/
