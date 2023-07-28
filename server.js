@@ -2,8 +2,7 @@ const path = require('path');
 const cors = require('cors');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
-const routerDocs = require('./routes/docs');
-const routerViews = require('./routes/views');
+const { routerDocs, routerViews, routerEmployees } = require('./routes/index');
 
 const express = require('express');
 const app = express();
@@ -36,37 +35,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use('/docs', express.static(path.join(__dirname, '/public')));
 
+//routes
 app.use('/', routerViews);
 app.use('/docs', routerDocs);
-
-//handlers
-
-app.get(
-  '/hello(.html)?',
-  (req, res, next) => {
-    console.log('attemped to load hello.html');
-    next();
-  },
-  (req, res) => {
-    res.send('Hello world!');
-  }
-);
-
-const one = (req, res, next) => {
-  console.log('one');
-  next();
-};
-
-const two = (req, res, next) => {
-  console.log('two');
-  next();
-};
-
-const three = (req, res) => {
-  res.send('Finished');
-};
-
-app.get('/chaning(.html)?', [one, two, three]);
+app.use('/employees', routerEmployees);
 
 app.all('*', (req, res) => {
   res.status(404);
