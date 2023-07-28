@@ -1,2 +1,12 @@
 20230727	17:08:17	2e409552-578b-4aca-8337-54c1e9e696f5	Error: Not allowed by CORS
 20230727	17:08:17	503d9324-ab38-4956-822b-aedcc353a828	Error: Not allowed by CORS
+20230728	14:45:15	3b7a9340-d589-47c7-8770-44fae1025cab	ForbiddenError: Forbidden
+20230728	14:45:59	7e52bec7-1d29-4cbb-a235-63e94067c906	ForbiddenError: Forbidden
+20230728	14:51:02	dff8ee24-7f9a-4c6f-974e-e3dd591df947	ForbiddenError: Forbidden
+20230728	14:52:16	3cfd28b0-d2c9-4dc3-b273-e1a05a39ba57	ForbiddenError: Forbidden
+20230728	16:07:32	bf3759ec-7f22-478d-84d2-2a3eae234ebc	ReferenceError: path is not defined
+20230728	16:07:51	abfeb0b1-53fb-4655-a6e9-4bc36cebc97f	ReferenceError: path is not defined
+20230728	16:08:10	62850659-a509-43f6-9bdd-8700b3505a4e	ReferenceError: path is not defined
+20230728	16:08:11	8131054e-27b0-4c09-ac77-5f7aab50ce35	ReferenceError: path is not defined
+20230728	16:08:58	1138c022-5227-4d19-aa25-1ce0460df960	ReferenceError: path is not defined
+20230728	16:08:59	378ca760-3a15-42d8-a289-b3c5d2ea0002	ReferenceError: path is not defined

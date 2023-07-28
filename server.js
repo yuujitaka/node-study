@@ -2,6 +2,9 @@ const path = require('path');
 const cors = require('cors');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
+const routerDocs = require('./routes/docs');
+const routerViews = require('./routes/views');
+
 const express = require('express');
 const app = express();
 
@@ -31,26 +34,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
+app.use('/docs', express.static(path.join(__dirname, '/public')));
 
-app.get('/', (req, res) => {
-  //both ways
-  //res.sendFile(path.join(__dirname, 'docs', 'test.txt'));
-  res.sendFile('./docs/test.txt', { root: __dirname });
-});
-
-app.get('/new-page(.html)?', (req, res) => {
-  res.sendFile('./views/new.html', { root: __dirname });
-});
-
-//with expression
-app.get('/regular-expression|/regex(.html)?', (req, res) => {
-  res.sendFile('./views/new.html', { root: __dirname });
-});
-
-app.get('/old-page(.html)?', (req, res) => {
-  //default is 302
-  res.redirect(301, '/new-page.html');
-});
+app.use('/', routerViews);
+app.use('/docs', routerDocs);
 
 //handlers
 
