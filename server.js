@@ -3,7 +3,7 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
-const { routerViews, routerEmployees } = require('./routes/index');
+const { routerViews, routerEmployees, routerUsers } = require('./routes');
 const express = require('express');
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 //routes
 app.use('/', routerViews);
 app.use('/employees', routerEmployees);
+app.use('/users', routerUsers);
 
 app.all('*', (req, res) => {
   res.status(404);
