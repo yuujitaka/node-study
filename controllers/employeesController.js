@@ -9,7 +9,7 @@ const getEmployee = (req, res) => {
 };
 
 const createNewEmployee = (req, res) => {
-  res.json({
+  res.status(201).json({
     firstname: req.body.firstname,
   });
 };

@@ -130,3 +130,6 @@
 20230728	16:35:50	278cca6c-555b-444e-bb73-a3a54706cdfe	DELETE	undefined	/employees
 20230728	16:37:01	749c14f2-7c65-47f8-a57f-f132cbc5f71d	GET	undefined	/employees/1
 20230728	16:37:22	4bab0222-7109-4068-9f5a-3514fad6ac47	GET	undefined	/employees
+20230801	14:14:38	94a8a166-510b-4ed6-b772-56cec767e61c	GET	undefined	/
+20230801	14:14:38	17f0573e-599e-4733-8e44-ee87ff784fb1	GET	undefined	/favicon.ico
+20230801	14:14:41	e5978d75-67d4-456a-ba5f-734950e4af30	GET	undefined	/employees

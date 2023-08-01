@@ -3,8 +3,7 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
-const { routerDocs, routerViews, routerEmployees } = require('./routes/index');
-
+const { routerViews, routerEmployees } = require('./routes/index');
 const express = require('express');
 const app = express();
 
@@ -19,11 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
-app.use('/docs', express.static(path.join(__dirname, '/public')));
 
 //routes
 app.use('/', routerViews);
-app.use('/docs', routerDocs);
 app.use('/employees', routerEmployees);
 
 app.all('*', (req, res) => {
