@@ -151,3 +151,10 @@
 20230801	17:00:45	5df5c88a-38ff-46cb-a2a6-6e1a22706d6e	POST	undefined	/users/login
 20230801	17:00:52	1aa87a9b-ada9-4b90-b03d-1ebd76bc371b	POST	undefined	/users/login
 20230801	17:00:55	e4f0628d-d4cd-40f3-a76e-5800bdc85335	POST	undefined	/users/login
+20230809	17:08:18	14f4b836-44ea-4737-a308-b38f9bfecdeb	POST	undefined	/users/login
+20230809	17:09:29	e23ae82e-99cd-407e-bfb2-1c660369dc21	POST	undefined	/users/login
+20230809	17:10:10	79dbb6a9-312a-4e0a-a035-4223aef688e6	GET	undefined	/employees
+20230809	17:10:36	2adad299-85f9-42b3-a402-44fc4ce9a209	GET	undefined	/employees
+20230809	17:10:50	78f43eaf-b276-4713-b999-75da5a9f805b	GET	undefined	/employees
+20230809	17:10:55	417d0135-d107-4cb7-8521-787621c179c0	POST	undefined	/users/login
+20230809	17:11:03	06b86f64-a564-49c9-887e-ba2e7823e175	GET	undefined	/employees
