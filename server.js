@@ -3,6 +3,8 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
+const verifyJWT = require('./middleware/verifyJWT');
+
 const { routerViews, routerEmployees, routerUsers } = require('./routes');
 const express = require('express');
 const app = express();
@@ -21,8 +23,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 //routes
 app.use('/', routerViews);
-app.use('/employees', routerEmployees);
 app.use('/users', routerUsers);
+
+//waterfall... every route below will use verifyJWT
+app.use(verifyJWT);
+app.use('/employees', routerEmployees);
 
 app.all('*', (req, res) => {
   res.status(404);
