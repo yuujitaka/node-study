@@ -70,9 +70,10 @@ const login = async (req, res) => {
       path.join(__dirname, '..', 'model', 'users.json'),
       JSON.stringify(usersDB.users)
     );
-    // production -> add "secure: true" only serves in https
     res.cookie('jwt', refreshToken, {
       httpOnly: true,
+      sameSite: 'None',
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({ accesToken });
@@ -118,7 +119,7 @@ const logout = async (req, res) => {
   );
 
   if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
     return res.sendStatus(204);
   }
 
