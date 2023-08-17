@@ -4,6 +4,7 @@ const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 
 const { routerViews, routerEmployees, routerUsers } = require('./routes');
 const express = require('express');
@@ -18,6 +19,10 @@ app.use(cors(corsOptions));
 //built-in middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+//middleware
+app.use(cookieParser());
+
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
 

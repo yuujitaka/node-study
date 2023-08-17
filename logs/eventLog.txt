@@ -160,3 +160,10 @@
 20230809	17:11:03	06b86f64-a564-49c9-887e-ba2e7823e175	GET	undefined	/employees
 20230809	17:16:33	81d0c721-3c6d-4e39-9245-6d135b119d15	POST	undefined	/users/login
 20230809	17:16:46	a72313a7-1107-46c7-a826-c62534acc70f	GET	undefined	/employees/1
+20230817	14:44:06	4cb02dd9-c6b1-4e29-88cd-bf437f846ab6	GET	undefined	/users/refreshToken
+20230817	14:44:56	06cbdeb5-02f2-47d2-a390-e64133bdfd8b	POST	undefined	/users/login
+20230817	14:46:07	f4f40823-dcb2-4a48-9eee-472b6855daa7	GET	undefined	/users/refreshToken
+20230817	14:49:18	dcb2e308-c620-45fb-936c-f25d8de76094	GET	undefined	/users/refreshToken
+20230817	14:50:17	494d73e0-259b-484d-97d7-2fe323f57ead	GET	undefined	/users/refreshToken
+20230817	14:50:39	cf5503fd-873b-486b-a34d-3307475be666	GET	undefined	/users/refreshToken
+20230817	14:52:16	d293cb61-3db5-48a3-9c53-48c8420871fe	GET	undefined	/users/refreshToken
