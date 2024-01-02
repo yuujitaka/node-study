@@ -10,3 +10,7 @@
 20230728	16:08:11	8131054e-27b0-4c09-ac77-5f7aab50ce35	ReferenceError: path is not defined
 20230728	16:08:58	1138c022-5227-4d19-aa25-1ce0460df960	ReferenceError: path is not defined
 20230728	16:08:59	378ca760-3a15-42d8-a289-b3c5d2ea0002	ReferenceError: path is not defined
+20240102	16:21:41	1d7d620e-dff8-4f5a-9726-8e80b58d1e64	Error: Cannot set headers after they are sent to the client
+20240102	16:21:42	fe8027eb-c445-4379-93d7-88c427c0354a	Error: Cannot set headers after they are sent to the client
+20240102	16:21:43	40c3dfcd-927a-48fb-be4f-b31e058fefe0	Error: Cannot set headers after they are sent to the client
+20240102	16:21:44	8201b2be-935e-47c0-bef6-0e850bb5dac1	Error: Cannot set headers after they are sent to the client

@@ -13,6 +13,7 @@ const usersDB = {
 
 dotenv.config();
 
+//Route handlers: https://expressjs.com/en/guide/routing.html
 const createNewUser = async (req, res) => {
   const { user, pwd } = req.body;
   if (!user || !pwd)
@@ -24,7 +25,7 @@ const createNewUser = async (req, res) => {
 
   try {
     const hashed = await bcrypt.hash(pwd, 10);
-    const newUser = { username: user, password: hashed };
+    const newUser = { username: user, roles: { User: 2001 }, password: hashed };
     usersDB.setUsers([...usersDB.users, newUser]);
 
     await fsPromises.writeFile(
@@ -49,10 +50,11 @@ const login = async (req, res) => {
   const match = await bcrypt.compare(pwd, foundUser.password);
 
   if (match) {
+    const roles = Object.values(foundUser.roles);
     const accesToken = jwt.sign(
-      { username: foundUser.username },
+      { UserInfo: { username: foundUser.username, roles } },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '30s' }
+      { expiresIn: '1h' }
     );
     const refreshToken = jwt.sign(
       { username: foundUser.username },
@@ -70,6 +72,8 @@ const login = async (req, res) => {
       path.join(__dirname, '..', 'model', 'users.json'),
       JSON.stringify(usersDB.users)
     );
+
+    //secure doesn't work with thunder client
     res.cookie('jwt', refreshToken, {
       httpOnly: true,
       sameSite: 'None',
@@ -95,12 +99,13 @@ const refreshAccessToken = (req, res) => {
   if (!foundUser) return res.sendStatus(403);
 
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-    console.log(decoded);
     if (err || foundUser.username !== decoded.username)
       return res.sendStatus(403);
 
+    const roles = Object.values(foundUser.roles);
+
     const accesToken = jwt.sign(
-      { username: foundUser.username },
+      { UserInfo: { username: foundUser.username, roles } },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: '30s' }
     );

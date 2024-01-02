@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "lint": "eslint"
   },
   "author": "Cleviane",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
     "nodemon": "^3.0.1"
   }
 }

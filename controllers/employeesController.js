@@ -1,5 +1,6 @@
 const data = require('../model/employees.json');
 
+//Route handlers:https://expressjs.com/en/guide/routing.html
 const getAllEmployees = (req, res) => {
   res.json(data);
 };
