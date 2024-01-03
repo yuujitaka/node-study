@@ -2,7 +2,6 @@ const path = require('path');
 const fsPromises = require('fs').promises;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
 
 const usersDB = {
   users: require('../model/users.json'),
@@ -10,8 +9,6 @@ const usersDB = {
     this.users = data;
   },
 };
-
-dotenv.config();
 
 //Route handlers: https://expressjs.com/en/guide/routing.html
 const createNewUser = async (req, res) => {
