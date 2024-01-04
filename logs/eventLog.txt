@@ -235,3 +235,5 @@
 20240102	16:39:32	51173e55-a767-4966-acde-7797679e91e3	DELETE	undefined	/employees
 20240102	16:39:39	2253fc3a-c68b-493e-8078-caa080b1aa10	POST	undefined	/users/login
 20240102	16:39:50	18116a5f-98a8-4bd8-b004-bd726f9ad743	DELETE	undefined	/employees
+20240103	18:03:57	8405d922-7731-44a8-a77a-2830f965011c	POST	undefined	/users/register
+20240103	18:18:10	4cd33d3d-7542-45b0-827d-f56772c7bb72	POST	undefined	/users/register
