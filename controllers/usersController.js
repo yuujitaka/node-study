@@ -1,14 +1,6 @@
-const path = require('path');
-const fsPromises = require('fs').promises;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-const usersDB = {
-  users: require('../model/users.json'),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+const User = require('../model/User');
 
 //Route handlers: https://expressjs.com/en/guide/routing.html
 const createNewUser = async (req, res) => {
@@ -16,19 +8,21 @@ const createNewUser = async (req, res) => {
   if (!user || !pwd)
     return res.status(400).json({ message: 'Username and password required.' });
 
-  const duplicate = usersDB.users.find((person) => person.username === user);
+  //check duplicates
+  const duplicate = await User.findOne({ username: user }).exec();
 
   if (duplicate) return res.sendStatus(409);
 
   try {
     const hashed = await bcrypt.hash(pwd, 10);
-    const newUser = { username: user, roles: { User: 2001 }, password: hashed };
-    usersDB.setUsers([...usersDB.users, newUser]);
 
-    await fsPromises.writeFile(
-      path.join(__dirname, '..', 'model', 'users.json'),
-      JSON.stringify(usersDB.users)
-    );
+    //create and store in mongoDB
+    const result = await User.create({
+      username: user,
+      password: hashed,
+    });
+
+    console.log(result);
 
     res.status(201).json({ success: 'new user created' });
   } catch (err) {
@@ -41,7 +35,8 @@ const login = async (req, res) => {
   if (!user || !pwd)
     return res.status(400).json({ message: 'Username and password required.' });
 
-  const foundUser = usersDB.users.find((person) => person.username === user);
+  const foundUser = await User.findOne({ username: user }).exec();
+
   if (!foundUser) return res.sendStatus(404);
 
   const match = await bcrypt.compare(pwd, foundUser.password);
@@ -59,16 +54,10 @@ const login = async (req, res) => {
       { expiresIn: '1d' }
     );
 
-    const otherUsers = usersDB.users.filter(
-      (person) => person.username !== foundUser.username
-    );
-    const currentUser = { ...foundUser, refreshToken };
-    usersDB.setUsers([...otherUsers, currentUser]);
-
-    await fsPromises.writeFile(
-      path.join(__dirname, '..', 'model', 'users.json'),
-      JSON.stringify(usersDB.users)
-    );
+    //Save refresh token in db
+    foundUser.refreshToken = refreshToken;
+    const result = await foundUser.save();
+    console.log(result);
 
     //secure doesn't work with thunder client
     res.cookie('jwt', refreshToken, {
@@ -83,15 +72,13 @@ const login = async (req, res) => {
   }
 };
 
-const refreshAccessToken = (req, res) => {
+const refreshAccessToken = async (req, res) => {
   const cookies = req.cookies;
 
   if (!cookies?.jwt) return res.sendStatus(401);
 
   const refreshToken = cookies.jwt;
-  const foundUser = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const foundUser = await User.findOne({ refreshToken }).exec();
 
   if (!foundUser) return res.sendStatus(403);
 
@@ -112,30 +99,21 @@ const refreshAccessToken = (req, res) => {
 
 const logout = async (req, res) => {
   const cookies = req.cookies;
-
+  console.log(cookies);
   if (!cookies?.jwt) return res.sendStatus(204);
   const refreshToken = cookies.jwt;
 
-  const foundUser = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const foundUser = await User.findOne({ refreshToken }).exec();
 
   if (!foundUser) {
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
     return res.sendStatus(204);
   }
 
-  const otherUsers = usersDB.users.filter(
-    (person) => person.refreshToken !== foundUser.refreshToken
-  );
-
-  const currentUser = { ...foundUser, refreshToken: '' };
-  usersDB.setUsers([...otherUsers, currentUser]);
-
-  await fsPromises.writeFile(
-    path.join(__dirname, '..', 'model', 'users.json'),
-    JSON.stringify(usersDB.users)
-  );
+  //Delete refresh token in db
+  foundUser.refreshToken = undefined;
+  const result = await foundUser.save();
+  console.log(result);
 
   res.clearCookie('jwt', { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
   res.sendStatus(204);

@@ -237,3 +237,15 @@
 20240102	16:39:50	18116a5f-98a8-4bd8-b004-bd726f9ad743	DELETE	undefined	/employees
 20240103	18:03:57	8405d922-7731-44a8-a77a-2830f965011c	POST	undefined	/users/register
 20240103	18:18:10	4cd33d3d-7542-45b0-827d-f56772c7bb72	POST	undefined	/users/register
+20240104	19:41:48	5ac17ddd-dd09-4800-859e-586d8bfc4f5e	POST	undefined	/users/login
+20240104	19:42:05	c4dbd9cb-8dcc-45ac-a289-a0eaa3ea2ba8	POST	undefined	/users/register
+20240104	19:43:04	4e4157ec-0ec3-487c-856e-351e330cf76c	POST	undefined	/users/login
+20240104	19:43:31	df99b0f3-6fad-41b8-8e67-bd4aa60eac2a	POST	undefined	/users/login
+20240104	19:44:07	e5663371-3f78-4067-8201-e7ef3e2f1534	POST	undefined	/users/login
+20240104	19:44:49	f5f609a2-8215-455f-b798-ce42bcdc22fd	POST	undefined	/users/login
+20240104	19:46:42	ef098278-bc87-45a6-a129-215faf806d41	GET	undefined	/users/logout
+20240104	19:51:08	32a81f0b-a07d-441b-85d1-4c19390b4236	GET	undefined	/users/logout
+20240105	11:57:31	bee317c3-8738-442a-a24b-0e8be8187841	POST	undefined	/users/login
+20240105	11:57:59	803ad68a-a07a-400e-b54b-7f37b3132515	GET	undefined	/users/logout
+20240105	11:58:59	d8895e68-5055-4175-b800-ed9c0ef30419	POST	undefined	/users/login
+20240105	11:59:40	92e55d38-8d90-441f-95db-a02bd2a4ebc8	GET	undefined	/users/logout
