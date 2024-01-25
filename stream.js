@@ -12,4 +12,5 @@ rs.on('data', (dataChunk) => {
   ws.write(dataChunk);
 });
 
+//more efficient -> substitute rs.on("data")....
 rs.pipe(ws);
